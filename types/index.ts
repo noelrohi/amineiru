@@ -1,3 +1,25 @@
+export type NavItem = {
+  title: string
+  href: string
+  disabled?: boolean
+}
+
+export type MainNavItem = NavItem
+
+export type SiteConfig = {
+  name: string
+  description: string
+  url: string
+  links: {
+    twitter: string
+    github: string
+  }
+  mainNav: {
+    title: string,
+    href: string
+  }[]
+}
+
 type Source = {
   url: string;
   isM3U8: boolean;
@@ -18,12 +40,11 @@ type Episode = {
   url: string;
 };
 
-type AnimeDetails = {
+export type AnimeDetails = {
   id: string;
   title: string;
   image: string;
   url: string;
-  genres: string[];
 };
 
 export type Info = AnimeDetails & {
@@ -41,30 +62,26 @@ export type AiringAnime = {
   currentPage: string;
   hasNextPage: boolean;
   results: AnimeDetails[];
+  genres: string[];
 };
 
+export interface RecentReleaseResult extends AnimeDetails {
+  episodeId: string;
+  episodeNumber: number;
+}
 export type RecentRelease = {
   currentPage: string;
   hasNextPage: boolean;
-  results: {
-    id: string;
-    title: string;
-    image: string;
-    url: string;
-    episodeId: string;
-    episodeNumber: number;
-  }[];
+  results: RecentReleaseResult[];
 };
+
+interface SearchedAnimeResult extends AnimeDetails {
+  releaseDate: string;
+  subOrDub: "dub" | "sub";
+}
 
 export type SearchedAnime = {
   currentPage: string;
   hasNextPage: boolean;
-  results: {
-    id: string;
-    title: string;
-    url: string;
-    image: string;
-    releaseDate: string;
-    subOrDub: "dub" | "sub";
-  }[];
+  results: SearchedAnimeResult[];
 };
