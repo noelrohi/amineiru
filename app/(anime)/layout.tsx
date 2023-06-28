@@ -10,12 +10,14 @@ interface layoutProps {
 async function layout({ children }: layoutProps) {
   const user = await currentUser();
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="container relative">
       <SiteHeader user={user} />
-      <main className="flex-1">{children}</main>
+      <main className="overflow-hidden bg-background shadow">
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );
-};
+}
 
 export default layout;

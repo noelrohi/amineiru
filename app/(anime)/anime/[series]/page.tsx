@@ -1,7 +1,8 @@
 import { animePromise } from "@/lib/promises";
+import { episodeSlug } from "@/lib/utils";
 import Link from "next/link";
 
-export default async function EpisodePage({
+export default async function SeriesPage({
   params,
 }: {
   params: { series: string };
@@ -17,7 +18,7 @@ export default async function EpisodePage({
           {data.episodes.map((episode) => {
             return (
               <li key={episode.id}>
-                <Link href={`/anime/${params.series}/${episode.number}`}>
+                <Link href={`/anime/${params.series}/${episodeSlug(episode.number)}`}>
                   Episode {episode.number}
                 </Link>
               </li>

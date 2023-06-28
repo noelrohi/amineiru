@@ -3,11 +3,11 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { animePromise } from "@/lib/promises";
 
+export const revalidate = 15
+
 export default async function Home() {
-  const [recentRelease, topAiring] = await Promise.all([
-    animePromise.recentRelease(),
-    animePromise.topAiring(),
-  ]);
+  const recentRelease = await animePromise.recentRelease();
+  const topAiring = await animePromise.topAiring();
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between">
