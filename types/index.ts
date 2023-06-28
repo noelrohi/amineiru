@@ -34,7 +34,7 @@ export type EpisodeLinks = {
   download: string;
 };
 
-type Episode = {
+export type Episode = {
   id: string;
   number: number;
   url: string;

@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 }
+
+export function episodeSlug(episode: number) {
+  return String(episode).replace(".", "-");
+}
