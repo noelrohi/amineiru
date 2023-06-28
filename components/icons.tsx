@@ -27,7 +27,9 @@ import {
     Search,
     FileTerminal,
     LogOut,
-    Play
+    Play,
+    Watch,
+    Tv
   } from "lucide-react"
   
   export type Icon = LucideIcon
@@ -77,4 +79,5 @@ import {
     twitter: Twitter,
     check: Check,
     play: Play,
+    tv: Tv,
   }

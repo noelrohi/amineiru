@@ -19,7 +19,7 @@ export default async function EpisodePage({
   const episodeInfo = await animePromise.episode(episode.id);
   const url = episodeInfo.sources.find((s) => s.quality === "720p")?.url;
   return (
-    <div className="grid lg:grid-cols-5 mt-2">
+    <div className="grid lg:grid-cols-5 mt-2 min-h-screen">
       <EpisodeList className="hidden lg:block" episodes={episodes} currentEpisode={Number(episodePath)}/>
       <div className="col-span-3">
         <AspectRatio ratio={16 / 9}>
