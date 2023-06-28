@@ -1,24 +1,24 @@
 export type NavItem = {
-  title: string
-  href: string
-  disabled?: boolean
-}
+  title: string;
+  href: string;
+  disabled?: boolean;
+};
 
-export type MainNavItem = NavItem
+export type MainNavItem = NavItem;
 
 export type SiteConfig = {
-  name: string
-  description: string
-  url: string
+  name: string;
+  description: string;
+  url: string;
   links: {
-    twitter: string
-    github: string
-  }
+    twitter: string;
+    github: string;
+  };
   mainNav: {
-    title: string,
-    href: string
-  }[]
-}
+    title: string;
+    href: string;
+  }[];
+};
 
 type Source = {
   url: string;
@@ -49,6 +49,7 @@ export type AnimeDetails = {
 
 export type Info = AnimeDetails & {
   subOrDub: "sub" | "dub";
+  genres: string[];
   description: string | null;
   releaseDate: string | null;
   type: string;
