@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn, episodeSlug } from "@/lib/utils";
 import { AnimeDetails } from "@/types";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ export function AnimeCard({
 }: AnimeCardProps) {
   return (
     <div className={cn("space-y-3", className)} {...props}>
-      <Link href={`anime/${anime.id}/${anime.episodeNumber ?? "1"}`}>
+      <Link href={`anime/${anime.id}/${episodeSlug(anime.episodeNumber ?? 1)}`}>
         <div className="overflow-hidden rounded-md">
           <Image
             src={anime.image}
