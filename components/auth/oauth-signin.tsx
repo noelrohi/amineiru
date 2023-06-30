@@ -21,7 +21,7 @@ const oauthProviders = [
 export function OAuthSignIn() {
   const [isLoading, setIsLoading] = React.useState<OAuthStrategy | null>(null)
   const { signIn, isLoaded: signInLoaded } = useSignIn()
-  console.log(signInLoaded)
+  // console.log(signInLoaded)
   async function oauthSignIn(provider: OAuthStrategy) {
     if (!signInLoaded) return null
     try {

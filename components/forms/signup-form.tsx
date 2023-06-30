@@ -21,6 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/icons";
 import { PasswordInput } from "@/components/password-input";
+import { absoluteUrl } from "@/lib/utils";
 
 type Inputs = z.infer<typeof authSchema>;
 
@@ -45,6 +46,7 @@ export function SignUpForm() {
       });
 
     startTransition(async () => {
+      // console.log(data)
       try {
         await signUp.create({
           emailAddress: data.email,
@@ -53,10 +55,10 @@ export function SignUpForm() {
 
         // Send email verification code
         await signUp.prepareEmailAddressVerification({
-          strategy: "email_code",
+          strategy: "email_link", redirectUrl: absoluteUrl("/home")
         });
 
-        router.push("/signup/verify-email");
+        router.push("/signup/verify");
         toast.message("Check your email", {
           description: "We sent you a 6-digit verification code.",
         });
@@ -83,7 +85,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="rodneymullen180@gmail.com" {...field} />
+                <Input placeholder="example@gmail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

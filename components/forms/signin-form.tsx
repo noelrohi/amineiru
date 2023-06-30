@@ -47,7 +47,7 @@ export function SignInForm() {
           identifier: data.email,
           password: data.password,
         })
-
+        console.log(result)
         if (result.status === "complete") {
           await setActive({ session: result.createdSessionId })
 
@@ -79,7 +79,7 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="rodneymullen180@gmail.com" {...field} />
+                <Input placeholder="rodneymullen1801@gmail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -106,7 +106,7 @@ export function SignInForm() {
             />
           )}
           Sign in
-          <span className="sr-only">Sign in</span>
+          <span className="sr-only">Sign in1</span>
         </Button>
       </form>
     </Form>
