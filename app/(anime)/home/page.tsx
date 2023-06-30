@@ -5,6 +5,7 @@ import { animePromise } from "@/lib/promises";
 import { Metadata } from "next";
 
 export const revalidate = 15
+export const runtime = "edge"
 
 export const metadata : Metadata = {
   title: "Home",

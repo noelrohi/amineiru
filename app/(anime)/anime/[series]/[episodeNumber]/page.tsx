@@ -18,6 +18,8 @@ export async function generateMetadata({
   };
 }
 
+export const runtime = "edge"
+
 export default async function EpisodePage({
   params,
 }: {

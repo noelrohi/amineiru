@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 
+export const runtime = "edge"
+
 export default function IndexPage() {
   return (
     <>
