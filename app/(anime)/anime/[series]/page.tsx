@@ -6,6 +6,18 @@ import { episodeSlug } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { series: string };
+}) {
+  const { description, title } = await animePromise.animeInfo(params.series);
+  return {
+    title,
+    description,
+  };
+}
+
 export default async function SeriesPage({
   params,
 }: {

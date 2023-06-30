@@ -2,8 +2,14 @@ import { AnimeCard } from "@/components/AnimeCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { animePromise } from "@/lib/promises";
+import { Metadata } from "next";
 
 export const revalidate = 15
+
+export const metadata : Metadata = {
+  title: "Home",
+  description: "Homepage of the Dramx",
+}
 
 export default async function Home() {
   const recentRelease = await animePromise.recentRelease();
