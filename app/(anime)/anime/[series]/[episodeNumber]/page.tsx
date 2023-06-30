@@ -5,6 +5,8 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { animePromise } from "@/lib/promises";
 import { notFound } from "next/navigation";
 
+// export const runtime = "edge"
+
 export async function generateMetadata({
   params,
 }: {
@@ -17,8 +19,6 @@ export async function generateMetadata({
     description,
   };
 }
-
-export const runtime = "edge"
 
 export default async function EpisodePage({
   params,

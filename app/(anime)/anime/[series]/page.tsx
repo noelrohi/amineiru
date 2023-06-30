@@ -6,6 +6,8 @@ import { episodeSlug } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+// export const runtime = "edge"
+
 export async function generateMetadata({
   params,
 }: {
@@ -17,8 +19,6 @@ export async function generateMetadata({
     description,
   };
 }
-
-export const runtime = "edge"
 
 export default async function SeriesPage({
   params,
