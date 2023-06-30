@@ -6,23 +6,21 @@ import { MainNav } from "@/components/layout/main-nav";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { siteConfig } from "@/config/site";
-import type { User } from "@clerk/nextjs/dist/types/server";
+import { currentUser } from "@clerk/nextjs";
 
-interface SiteHeaderProps {
-  user: User | null;
-}
+export async function SiteHeader() {
+  const user = await currentUser();
 
-export function SiteHeader({ user }: SiteHeaderProps) {
   const initials = `${user?.firstName?.charAt(0) ?? ""} ${
     user?.lastName?.charAt(0) ?? ""
   }`;

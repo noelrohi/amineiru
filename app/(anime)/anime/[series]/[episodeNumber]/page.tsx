@@ -5,26 +5,30 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { animePromise } from "@/lib/promises";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata({
-  params,
-}: {
+interface EpisodeProps {
   params: { series: string; episodeNumber: string };
-}) {
-  const { title, description } = await animePromise.animeInfo(params.series);
+}
 
+export async function generateMetadata({ params }: EpisodeProps) {
+  const { title, description } = await animePromise.animeInfo(params.series);
   return {
     title: `${title} - Episode ${params.episodeNumber}`,
     description,
   };
 }
 
-export const runtime = "edge"
+export async function generateStaticParams({ params }: EpisodeProps) {
+  const { totalEpisodes } = await animePromise.animeInfo(params.series);
+  const episodeList = Array.from(
+    { length: totalEpisodes },
+    (_, i) => `${i + 1}`
+  );
+  return episodeList;
+}
 
-export default async function EpisodePage({
-  params,
-}: {
-  params: { series: string; episodeNumber: string };
-}) {
+export const runtime = "edge";
+
+export default async function EpisodePage({ params }: EpisodeProps) {
   const { episodes } = await animePromise.animeInfo(params.series);
   const episodePath = params.episodeNumber.replace("-", ".");
   const episode = episodes.find((e) => e.number === parseFloat(episodePath));

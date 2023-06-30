@@ -18,7 +18,19 @@ export async function generateMetadata({
   };
 }
 
-export const runtime = "edge"
+export async function generateStaticParams() {
+  const { results: recentSeries } = await animePromise.recentRelease();
+  const { results: topAiringSeries } = await animePromise.topAiring()
+  const listOfRecentSeries = recentSeries.map((series) => {
+    return series.id;
+  });
+  const listOfTopSeries = topAiringSeries.map((series) => {
+    return series.id;
+  });
+  return [...listOfTopSeries, ...listOfRecentSeries];
+}
+
+export const runtime = "edge";
 
 export default async function SeriesPage({
   params,
