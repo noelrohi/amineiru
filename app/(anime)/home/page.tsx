@@ -3,18 +3,21 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { animePromise } from "@/lib/promises";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
-export const revalidate = 15
-export const runtime = "edge"
+export const revalidate = 15;
+export const runtime = "edge";
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
   title: "Home",
   description: "Homepage of the Dramx",
-}
+};
 
 export default async function Home() {
-  const recentRelease = await animePromise.recentRelease();
-  const topAiring = await animePromise.topAiring();
+  const [topAiring, recentRelease] = await Promise.all([
+    animePromise.topAiring(),
+    animePromise.recentRelease(),
+  ]);
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between">
@@ -29,16 +32,18 @@ export default async function Home() {
       <div className="relative">
         <ScrollArea>
           <div className="flex space-x-4 pb-4">
-            {topAiring?.results.map((anime) => (
-              <AnimeCard
-                anime={anime}
-                key={anime.id}
-                className="w-[250px]"
-                aspectRatio="portrait"
-                width={250}
-                height={330}
-              />
-            ))}
+            <Suspense fallback={"Loading..."}>
+              {topAiring?.results.map((anime) => (
+                <AnimeCard
+                  anime={anime}
+                  key={anime.id}
+                  className="w-[250px]"
+                  aspectRatio="portrait"
+                  width={250}
+                  height={330}
+                />
+              ))}
+            </Suspense>
           </div>
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
@@ -55,16 +60,18 @@ export default async function Home() {
       <div className="relative">
         <ScrollArea>
           <div className="flex space-x-4 pb-4">
-            {recentRelease.results.map((anime) => (
-              <AnimeCard
-                anime={anime}
-                key={anime.id}
-                className="w-[250px]"
-                aspectRatio="portrait"
-                width={250}
-                height={330}
-              />
-            ))}
+            <Suspense fallback={"Loading..."}>
+              {recentRelease.results.map((anime) => (
+                <AnimeCard
+                  anime={anime}
+                  key={anime.id}
+                  className="w-[250px]"
+                  aspectRatio="portrait"
+                  width={250}
+                  height={330}
+                />
+              ))}
+            </Suspense>
           </div>
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
