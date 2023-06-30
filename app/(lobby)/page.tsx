@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 export default function IndexPage() {
   return (
@@ -14,7 +14,7 @@ export default function IndexPage() {
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
             <Balancer>
-              Dramx is an anime streaming site built with Nextjs 13
+              {siteConfig.name} is an anime streaming site built with Nextjs 13
             </Balancer>
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Tailwind CSS",
     "Server Components",
     "Server Actions",
-    "Dramx",
+    siteConfig.name,
     "Anime",
     "Watch Anime",
     "Anime Streaming Site",

@@ -1,6 +1,7 @@
 import { AnimeCard } from "@/components/AnimeCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { siteConfig } from "@/config/site";
 import { animePromise } from "@/lib/promises";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -10,7 +11,7 @@ export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Homepage of the Dramx",
+  description: `Homepage of the ${siteConfig.name}`,
 };
 
 export default async function Home() {

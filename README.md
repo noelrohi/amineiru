@@ -1,4 +1,4 @@
-# Dramx
+# Amineiru
 
 Anime streaming site
 ## Built using
